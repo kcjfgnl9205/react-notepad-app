@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/react-notepad-app/static/js/main.7d918f98.js",
+    "main.js": "/react-notepad-app/static/js/main.06d9261e.js",
     "index.html": "/react-notepad-app/index.html",
-    "main.7d918f98.js.map": "/react-notepad-app/static/js/main.7d918f98.js.map"
+    "main.06d9261e.js.map": "/react-notepad-app/static/js/main.06d9261e.js.map"
   },
   "entrypoints": [
-    "static/js/main.7d918f98.js"
+    "static/js/main.06d9261e.js"
   ]
 }
