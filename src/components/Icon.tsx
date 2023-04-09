@@ -1,5 +1,5 @@
 import { IconButton } from '@mui/material';
-import { Add as MuiAddIcon, Delete as MuiDeleteIcon, Check as CheckIcon } from '@mui/icons-material';
+import { Add as MuiAddIcon, Delete as MuiDeleteIcon, Check as CheckIcon, ContentCopy as ContentCopyIcon } from '@mui/icons-material';
 
 
 type ButtonProp = {
@@ -24,5 +24,12 @@ export const DeleteIcon = ({ onClick }: ButtonProp) => (
 export const ConfirmIcon = ({ onClick }: ButtonProp) => (
   <IconButton size="large" onClick={onClick} >
     <CheckIcon />
+  </IconButton>
+)
+
+//복사아이콘
+export const CopyIcon = ({ onClick }: ButtonProp) => (
+  <IconButton size="large" onClick={onClick} >
+    <ContentCopyIcon />
   </IconButton>
 )

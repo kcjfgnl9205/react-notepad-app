@@ -3,7 +3,7 @@ import { Box, TextField } from '@mui/material';
 
 import { MAX_LENGTH } from '../constants/index';
 import { NoteFooter } from './';
-import { AddIcon, ConfirmIcon, DeleteIcon } from './Icon';
+import { AddIcon, ConfirmIcon, DeleteIcon, CopyIcon } from './Icon';
 import { NoteType } from '../types/index'
 
 
@@ -41,6 +41,11 @@ const Note = ({ note, handleAddNote, handleEditNote, handleDeleteNote, addFlg, s
     setAddFlg?.(false);
   }
 
+  //클립보드 복사
+  const onCopyHandler =  (e: React.MouseEvent<HTMLButtonElement>) => {
+    navigator.clipboard.writeText(data.note);
+  }
+
   return (
     <Box
       sx={{
@@ -73,7 +78,10 @@ const Note = ({ note, handleAddNote, handleEditNote, handleDeleteNote, addFlg, s
         ? <AddIcon onClick={e => onAddHandler(e, data.note)} />
         : onEdit
         ? <ConfirmIcon onClick={e => onEditHandler(e, data.id, data.note)} />
-        : <DeleteIcon onClick={e => handleDeleteNote?.(e, data.id)} />
+        : <>
+            <CopyIcon onClick={e => onCopyHandler(e)} />
+            <DeleteIcon onClick={e => handleDeleteNote?.(e, data.id)} />
+          </>
       }
     </NoteFooter>
     </Box>
