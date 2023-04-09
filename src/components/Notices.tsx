@@ -20,14 +20,14 @@ const Notices = ({search, addFlg, setAddFlg, notes, handleAddNote, handleEditNot
   <Grid container spacing={2}>
     {
       addFlg &&
-      <Grid item xs={4}>
+      <Grid item xs={12} sm={6} md={4}>
         <Note note={defaultNote} handleAddNote={handleAddNote} addFlg={addFlg} setAddFlg={setAddFlg} />
       </Grid>
     }
     {
       notes?.filter(el => el.note.includes(search))
             .sort((a, b) => b.id - a.id)
-            .map(note => <Grid item xs={4} key={note.id}>
+            .map(note => <Grid item xs={12} sm={6} md={4} key={note.id}>
                            <Note
                             note={note}
                             handleEditNote={handleEditNote}
