@@ -1,35 +1,19 @@
-import { IconButton } from '@mui/material';
-import { Add as MuiAddIcon, Delete as MuiDeleteIcon, Check as CheckIcon, ContentCopy as ContentCopyIcon } from '@mui/icons-material';
+import { IconButton, Tooltip } from '@mui/material';
 
 
 type ButtonProp = {
+  tooltipTitle?: string;
   onClick?: (e:  React.MouseEvent<HTMLButtonElement>) => void;
+  icon?: JSX.Element;
 }
 
-//추가아이콘
-export const AddIcon = ({ onClick }: ButtonProp) => (
-  <IconButton size="large" onClick={onClick} >
-    <MuiAddIcon />
-  </IconButton>
+
+const Icon = ({ tooltipTitle, onClick, icon }: ButtonProp) => (
+  <Tooltip title={ tooltipTitle } placement="top" followCursor={true} describeChild={true}>
+    <IconButton size="large" onClick={onClick} >
+      {icon}
+    </IconButton>
+  </Tooltip>
 )
 
-//삭제아이콘
-export const DeleteIcon = ({ onClick }: ButtonProp) => (
-  <IconButton size="large" onClick={onClick} >
-    <MuiDeleteIcon />
-  </IconButton>
-)
-
-//확인아이콘
-export const ConfirmIcon = ({ onClick }: ButtonProp) => (
-  <IconButton size="large" onClick={onClick} >
-    <CheckIcon />
-  </IconButton>
-)
-
-//복사아이콘
-export const CopyIcon = ({ onClick }: ButtonProp) => (
-  <IconButton size="large" onClick={onClick} >
-    <ContentCopyIcon />
-  </IconButton>
-)
+export default Icon;

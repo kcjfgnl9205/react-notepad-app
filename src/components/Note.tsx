@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Box, TextField } from '@mui/material';
+import { Add as AddIcon, Delete as DeleteIcon, Check as CheckIcon, ContentCopy as CopyIcon } from '@mui/icons-material';
 
 import { MAX_LENGTH } from '../constants/index';
-import { NoteFooter } from './';
-import { AddIcon, ConfirmIcon, DeleteIcon, CopyIcon } from './Icon';
+import { NoteFooter, Icon } from './';
 import { NoteType } from '../types/index'
 
 
@@ -42,8 +42,11 @@ const Note = ({ note, handleAddNote, handleEditNote, handleDeleteNote, addFlg, s
   }
 
   //클립보드 복사
+  const [ copyTooltipTitle, setCopyTooltipTitle ] = useState<string>("복사");
   const onCopyHandler =  (e: React.MouseEvent<HTMLButtonElement>) => {
     navigator.clipboard.writeText(data.note);
+    setCopyTooltipTitle("클립보드에 복사되었습니다.");
+    setTimeout(() => setCopyTooltipTitle("복사"), 1000);
   }
 
   return (
@@ -75,13 +78,29 @@ const Note = ({ note, handleAddNote, handleEditNote, handleDeleteNote, addFlg, s
     <NoteFooter maxLengthText={addFlg || onEdit ? maxLengthText : data?.date}>
       {
         addFlg
-        ? <AddIcon onClick={e => onAddHandler(e, data.note)} />
+        ? <Icon
+            tooltipTitle="추가"
+            icon={<AddIcon />}
+            onClick={e => onAddHandler(e, data.note)}
+          />
         : onEdit
-        ? <ConfirmIcon onClick={e => onEditHandler(e, data.id, data.note)} />
-        : <>
-            <CopyIcon onClick={e => onCopyHandler(e)} />
-            <DeleteIcon onClick={e => handleDeleteNote?.(e, data.id)} />
-          </>
+        ? <Icon
+            tooltipTitle="수정"
+            icon={<CheckIcon />}
+            onClick={e => onEditHandler(e, data.id, data.note)}
+          />
+        : <Box>
+            <Icon
+              tooltipTitle={copyTooltipTitle}
+              icon={<CopyIcon />}
+              onClick={e => onCopyHandler(e)}
+            />
+            <Icon
+              tooltipTitle="삭제"
+              icon={<DeleteIcon />}
+              onClick={e => handleDeleteNote?.(e, data.id)}
+            />
+          </Box>
       }
     </NoteFooter>
     </Box>

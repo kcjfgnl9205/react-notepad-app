@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Container, Box } from '@mui/material';
+import { Add as AddIcon } from '@mui/icons-material';
 
-import { Header, Search, Notices } from './components';
+import { Header, Search, Notices, Icon } from './components';
 import useLocalStorage from './hooks/useLocalStorage';
 import { NoteType } from './types/index';
-import { AddIcon } from './components/Icon';
 
 
 //메모장 제목
@@ -54,7 +54,7 @@ function App() {
       {/* 헤더 */}
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Header title={APP_TITLE_NAME} />
-        <AddIcon onClick={onChangeAddFlg} />
+        <Icon icon={<AddIcon />} onClick={onChangeAddFlg} />
       </Box>
 
       {/* 검색창 */}
