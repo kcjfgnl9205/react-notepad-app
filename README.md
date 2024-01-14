@@ -2,7 +2,11 @@
 
 리액트로 만든 메모장 앱
 
-- url: https://kcjfgnl9205.github.io/react-notepad-app
+## Demo
+
+https://kcjfgnl9205.github.io/react-notepad-app
+
+<img width="600" alt="image" src="https://github.com/kcjfgnl9205/react-notepad-app/assets/126145519/03f921c7-81ba-46da-b70e-f729998c33b7">
 
 ## 주요기능
 
